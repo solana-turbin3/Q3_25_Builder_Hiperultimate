@@ -1,5 +1,5 @@
 [package]
-name = "anchor-vault"
+name = "vault-anchor"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2021"
@@ -16,7 +16,6 @@ no-idl = []
 no-log-ix-name = []
 idl-build = ["anchor-lang/idl-build"]
 
-
 [dependencies]
 anchor-lang = "0.31.1"
-
+cargo-expand = "1.0.113"
