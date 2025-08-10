@@ -363,8 +363,8 @@ describe("escrow-anchor", () => {
   });
 
   it("Close all accounts and transfer funds to maker ", async () => {
-    let makerAccountBalance = await provider.connection.getBalance(maker.publicKey);
-    console.log("Makers balance before : ", makerAccountBalance);
+    let beforeMakerBalance = await provider.connection.getBalance(maker.publicKey);
+    console.log("Makers balance before : ", beforeMakerBalance);
 
     const tx = await program.methods.close().accounts({
       maker: maker.publicKey,
@@ -374,8 +374,9 @@ describe("escrow-anchor", () => {
 
     console.log("All accounds closed succesfully : ", tx);
 
-    makerAccountBalance = await provider.connection.getBalance(maker.publicKey);
-    console.log("Makers balance after : ", makerAccountBalance);
+    const afterMakerBalance = await provider.connection.getBalance(maker.publicKey);
+    console.log("Makers balance after : ", afterMakerBalance);
+    expect(beforeMakerBalance).lessThan(afterMakerBalance);
 
   })
 });
